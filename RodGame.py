@@ -1,6 +1,6 @@
 
 from tkinter import *
-
+import random
 import Rod.Rod
 
 
@@ -18,6 +18,8 @@ class Window:
         self.leftImage = PhotoImage(file='images/left_arrow.png')
         self.downImage = PhotoImage(file='images/down_arrow.png')
 
+
+
         f1 = Frame(self.window)
         f1.pack()
         '''
@@ -31,6 +33,7 @@ class Window:
         #self.firstLabel = Label(f1, image=self.downImage).pack()
 
         self.firstButton = Button(f1, image=self.downImage, command=lambda: self.shootA(f1))
+
         self.firstButton.image = self.downImage
         self.firstButton['image'] = self.downImage
         self.firstButton.pack()
@@ -56,6 +59,8 @@ class Window:
         #secondButton = Button(f1, image=self.downImage).pack()
         #thirdButton = Button(f1, image=self.downImage).pack()
         #fourthButton = Button(f1, image=self.downImage).pack()
+        self.setDirections(random.randint(0,3),random.randint(0,3),random.randint(0,3),random.randint(0,3))
+
         self.window.protocol("WM_DELETE_WINDOW", self.endprogram)
         self.window.mainloop()
 
@@ -69,6 +74,60 @@ class Window:
         self.secondButton = Button(self.frameRod, image=self.downImage).pack()
         self.thirdButton = Button(self.frameRod, image=self.downImage).pack()
         self.fourthButton = Button(self.frameRod, image=self.downImage).pack()
+
+    def setDirections(self, a, b, c, d):
+        if a == 0:
+            self.firstButton.image = self.downImage
+            self.firstButton['image'] = self.downImage
+        elif a == 1:
+            self.firstButton.image = self.rightImage
+            self.firstButton['image'] = self.rightImage
+        elif a == 2:
+            self.firstButton.image = self.upImage
+            self.firstButton['image'] = self.upImage
+        elif a == 3:
+            self.firstButton.image = self.leftImage
+            self.firstButton['image'] = self.leftImage
+
+        if b == 0:
+            self.secondButton.image = self.downImage
+            self.secondButton['image'] = self.downImage
+        elif b == 1:
+            self.secondButton.image = self.rightImage
+            self.secondButton['image'] = self.rightImage
+        elif b == 2:
+            self.secondButton.image = self.upImage
+            self.secondButton['image'] = self.upImage
+        elif b == 3:
+            self.secondButton.image = self.leftImage
+            self.secondButton['image'] = self.leftImage
+
+        if c == 0:
+            self.thirdButton.image = self.downImage
+            self.thirdButton['image'] = self.downImage
+        elif c == 1:
+            self.thirdButton.image = self.rightImage
+            self.thirdButton['image'] = self.rightImage
+        elif c == 2:
+            self.thirdButton.image = self.upImage
+            self.thirdButton['image'] = self.upImage
+        elif c == 3:
+            self.thirdButton.image = self.leftImage
+            self.thirdButton['image'] = self.leftImage
+
+        if d == 0:
+            self.fourthButton.image = self.downImage
+            self.fourthButton['image'] = self.downImage
+        elif d == 1:
+            self.fourthButton.image = self.rightImage
+            self.fourthButton['image'] = self.rightImage
+        elif d == 2:
+            self.fourthButton.image = self.upImage
+            self.fourthButton['image'] = self.upImage
+        elif d == 3:
+            self.fourthButton.image = self.leftImage
+            self.fourthButton['image'] = self.leftImage
+
 
     def getDirections(self):
         a,b,c,d = 0,0,0,0
